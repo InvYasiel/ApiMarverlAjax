@@ -1,0 +1,40 @@
+.contenedor-botones {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#tituloVotacion {
+    margin-top: 20px;
+}
+
+.contenedor-heroes, .contenedor-comics, .contenedor-series {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+#pagination-1{
+    width: 350px;
+    margin: 0 auto;
+}
+#pagination-2{
+    width: 350px;
+    margin: 0 auto;
+}
+#pagination-3{
+    width: 350px;
+    margin: 0 auto;
+}
+
+.card1, .card2, .card{
+    width: 30% !important;
+    margin-top: 20px;
+}
+.morecontent span {
+    display: none;
+}
+.morelink {
+    display: block;
+}
+.card-img-top{
+    height: 370px;
+}

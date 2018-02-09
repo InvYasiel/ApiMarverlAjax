@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gráficos de los votos a las películas</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/graf.css">
+</head>
+
+<body>
+    <div class="contenedor">
+        <h2 tabindex="0" aria-label="Las votaciones hasta el momento">Las votaciones hasta el momento</h2>
+
+        <h3>Votaciones de Heroes</h3>
+        <div id="chart_heroes" tabindex="0" aria-label="Gráficas"></div>
+
+        <h3>Votaciones de Comics</h3>
+        <div id="chart_comics" tabindex="0" aria-label="Gráficas"></div>
+
+        <h3>Votaciones de Series</h3>
+        <div id="chart_series" tabindex="0" aria-label="Gráficas"></div>
+
+        <p tabindex="0">Selecciona el tipo de graficos que prefieras </p>
+        <div class="btn-group mr-2" role="group" aria-label="Botones para cambiar las vista de las gráficas">
+            <button type="button" class="btn btn-primary" title="Grafica modo Donut" aria-label="Botón para la vista de la gráfica a modo Donut"
+                alt="boton" onclick="drawCharts(this.id)" id="1">
+                <img id="graficos1" src="img/donut.png" alt="btn">
+            </button>
+            <button type="button" class="btn btn-primary" title="Grafica modo Tarta" aria-label="Botón para la vista de la gráfica a modo Tarta"
+                alt="boton" onclick="drawCharts(this.id)" id="2">
+                <img id="graficos2" src="img/tarta.png" alt="btn">
+            </button>
+            <button type="button" class="btn btn-primary" title="Grafica modo Barras" aria-label="Botón para la vista de la gráfica a modo Barras"
+                alt="boton" onclick="drawCharts(this.id)" id="3">
+                <img id="graficos3" src="img/barras.png" alt="btn">
+            </button>
+
+        </div>
+        </br>
+        <form action="index.html">
+            <button type="submit" class="btn btn-primary" title="Volver página principal" id="volver">
+                Volver a La Página principal
+            </button>
+        </form>
+
+    </div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="js/grafico.js"></script>
+</body>
+
+</html>

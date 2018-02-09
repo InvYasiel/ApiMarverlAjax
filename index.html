@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/simplePagination.css">
+    <title>Votación Marvel</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Votaciones Yasiel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <div class="container">
+
+        <div class="contenedor-botones">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-secondary" onclick="cargarHeroes()">Heores</button>
+                <button type="button" class="btn btn-secondary" onclick="cargarComics()">Comics</button>
+                <button type="button" class="btn btn-secondary" onclick="cargarSeries()">Series</button>
+            </div>
+        </div>
+
+        <h1 class="text-center" id="tituloVotacion">Elige tu favorito</h1>
+
+        <div id="pagination-1"></div>
+        <div class="contenedor-heroes">
+        </div>
+
+        <div id="pagination-2"></div>
+        <div class="contenedor-comics">
+        </div>
+
+        <div id="pagination-3"></div>
+        <div class="contenedor-series">
+        </div>
+
+        <div class="modal" id="spinner" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Cargando</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="text-align:center;">
+                        <img src="img/ajax-loader.gif" alt="ajax">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+            aria-label="Ventana emergente para registrarte antes de votar (es obligatorio)">
+            <div class="modal-dialog" aria-label="Ventana emergente para registrarte antes de votar (es obligatorio)">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel" aria-label="Formulario de registro">Registro</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Botón X para cerrar pestaña">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="resultados.html">
+                            <input type="hidden" id="IdMarvel" id-pelicula="0">
+
+                            <div class="form-group">
+                                <label for="Personaje_Comic">Personaje o comic Selecionada</label>
+                                <input type="text" class="form-control" id="Comic" disabled placeholder="Comic" aria-labelledby="Comic" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email ">Email </label>
+                                <input type="email" class="form-control" id="email" aria-labelledby="email" aria-label="Introduce tu email" placeholder="Introduce tu email"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Nombre">Nombre</label>
+                                <input type="text" class="form-control" id="Nombre" placeholder="Introduce tu nombre" aria-labelledby="Nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Telefono">Teléfono</label>
+                                <input type="text" class="form-control" id="Telefono" placeholder="Introduce tu telefono" aria-labelledby="Telefono" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary" onclick="votarComic()">Confirmar Votacion</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="ModalHeroe" tabindex="-1" role="dialog" aria-labelledby="ModalHeroeLabel" aria-hidden="true"
+            aria-label="Ventana emergente para registrarte antes de votar (es obligatorio)">
+            <div class="modal-dialog" aria-label="Ventana emergente para registrarte antes de votar (es obligatorio)">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalHeroeLabel" aria-label="Formulario de registro">Registro</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Botón X para cerrar pestaña">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="resultados.html">
+                            <input type="hidden" id="idHeroe" id-pelicula="0">
+
+                            <div class="form-group">
+                                <label for="Personaje_Comic">Heroe Selecionado</label>
+                                <input type="text" class="form-control" id="Heroe" disabled placeholder="Heroe" aria-labelledby="Heroe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email ">Email </label>
+                                <input type="email" class="form-control" id="emailHeroe" aria-labelledby="email" aria-label="Introduce tu email" placeholder="Introduce tu email"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Nombre">Nombre</label>
+                                <input type="text" class="form-control" id="NombreHeroe" placeholder="Introduce tu nombre" aria-labelledby="Nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Telefono">Teléfono</label>
+                                <input type="text" class="form-control" id="TelefonoHeroe" placeholder="Introduce tu telefono" aria-labelledby="Telefono"
+                                    required>
+                            </div>
+                            <button type="submit" class="btn btn-primary" onclick="votarHeroes()">Confirmar Votacion</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="ModalSeries" tabindex="-1" role="dialog" aria-labelledby="ModalSeriesLabel" aria-hidden="true"
+        aria-label="Ventana emergente para registrarte antes de votar (es obligatorio)">
+        <div class="modal-dialog" aria-label="Ventana emergente para registrarte antes de votar (es obligatorio)">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalSeriesLabel" aria-label="Formulario de registro">Registro</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Botón X para cerrar pestaña">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="resultados.html">
+                        <input type="hidden" id="idSeries" id-pelicula="0">
+
+                        <div class="form-group">
+                            <label for="Personaje_Comic">Serie seleccionada</label>
+                            <input type="text" class="form-control" id="Series" disabled placeholder="Series" aria-labelledby="Series" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email ">Email </label>
+                            <input type="email" class="form-control" id="emailSeries" aria-labelledby="email" aria-label="Introduce tu email" placeholder="Introduce tu email"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Nombre">Nombre</label>
+                            <input type="text" class="form-control" id="NombreSeries" placeholder="Introduce tu nombre" aria-labelledby="Nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Telefono">Teléfono</label>
+                            <input type="text" class="form-control" id="TelefonoSeries" placeholder="Introduce tu telefono" aria-labelledby="Telefono"
+                                required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" onclick="votarSeries()">Confirmar Votacion</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.0.js"></script>
+    <script src="js/jquery.simplePagination.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script src="js/marvel.js"></script>
+</body>
+
+</html>
