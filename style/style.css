@@ -38,3 +38,9 @@
 .card-img-top{
     height: 370px;
 }
+@media only screen and (max-width: 500px){
+    .card1, .card2, .card{
+        width: 80% !important;
+        margin-top: 20px;
+    }
+}
